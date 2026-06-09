@@ -1,0 +1,54 @@
+---
+import { whatsappInquiry } from '../data/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  priceLabel?: string;
+  features: string[];
+  image: string;
+  inquirySubject: string;
+}
+
+const { title, description, priceLabel, features, image, inquirySubject } = Astro.props;
+---
+<article class="card-surface overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-accent-gold group flex flex-col h-full reveal-on-scroll">
+  <div class="h-56 bg-onyx overflow-hidden relative border-b border-border-subtle">
+    <img
+      src={image}
+      alt={title}
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
+      loading="lazy"
+    />
+    {priceLabel && (
+      <span class="absolute top-4 right-4 bg-zinc/90 backdrop-blur-sm border border-accent-gold/50 text-accent-gold text-xs font-semibold px-4 py-1.5 rounded uppercase tracking-wider">
+        {priceLabel}
+      </span>
+    )}
+  </div>
+
+  <div class="p-8 flex flex-col flex-grow">
+    <h3 class="text-2xl font-serif font-semibold mb-2 group-hover:text-accent-gold transition-colors">{title}</h3>
+    {description && <p class="text-sm text-text-ash mb-6 leading-relaxed">{description}</p>}
+
+    <ul class="space-y-3 mb-8 flex-grow">
+      {features.map((feature) => (
+        <li class="flex items-start text-sm text-text-ash leading-relaxed">
+          <svg class="w-4 h-4 text-accent-gold mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          {feature}
+        </li>
+      ))}
+    </ul>
+
+    <a
+      href={whatsappInquiry(inquirySubject)}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-whatsapp w-full text-center mt-auto text-xs !py-3"
+    >
+      Inquire on WhatsApp
+    </a>
+  </div>
+</article>

@@ -1,0 +1,93 @@
+---
+import { site, mapLocations, googleMapsLink } from '../data/site';
+
+const primary = mapLocations[0];
+const locationsJson = JSON.stringify(
+  mapLocations.map((loc) => ({
+    lat: loc.lat,
+    lng: loc.lng,
+    label: loc.label,
+    zoom: loc.zoom,
+  }))
+);
+---
+<div class="space-y-4">
+  <div class="card-surface overflow-hidden">
+    <div id="service-map" class="h-80 md:h-96 w-full"></div>
+  </div>
+
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-sm text-text-ash text-center sm:text-left">
+      {primary.label}
+    </p>
+    <a
+      href={googleMapsLink()}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-outline inline-flex items-center gap-2 shrink-0"
+    >
+      <svg class="w-4 h-4 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+      Open in Google Maps
+    </a>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="anonymous"></script>
+<script define:vars={{ locationsJson, siteName: site.name, googleMapsUrl: googleMapsLink() }}>
+  let mapInstance = null;
+
+  function initMap() {
+    const mapEl = document.getElementById('service-map');
+    if (!mapEl || !window.L) return;
+
+    if (mapInstance) {
+      mapInstance.remove();
+      mapInstance = null;
+    }
+
+    const locations = JSON.parse(locationsJson);
+    const primary = locations[0];
+    const zoom = primary?.zoom ?? 15;
+
+    mapInstance = window.L.map('service-map', { scrollWheelZoom: false }).setView(
+      [primary.lat, primary.lng],
+      zoom
+    );
+
+    window.L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+      maxZoom: 19,
+    }).addTo(mapInstance);
+
+    locations.forEach((loc) => {
+      const marker = window.L.marker([loc.lat, loc.lng]).addTo(mapInstance);
+      marker.bindPopup(
+        `<strong>${siteName}</strong><br/>${loc.label}<br/><a href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer" style="color:#C5A059;margin-top:6px;display:inline-block;">Open in Google Maps</a>`
+      );
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMap);
+  } else {
+    initMap();
+  }
+
+  document.addEventListener('astro:page-load', initMap);
+</script>
+
+<style>
+  :global(#service-map .leaflet-control-zoom a) {
+    background: #18181B !important;
+    color: #C5A059 !important;
+    border-color: #27272A !important;
+  }
+
+  :global(#service-map .leaflet-popup-content a) {
+    color: #C5A059 !important;
+  }
+</style>

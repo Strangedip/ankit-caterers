@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import CategoryOverview from '../components/CategoryOverview.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CuisineGrid from '../components/CuisineGrid.astro';
+import EventTypeCard from '../components/EventTypeCard.astro';
+import CTA from '../components/CTA.astro';
+import { servicesPage } from '../data/services';
+
+const anchors = [
+  { id: 'catering', label: 'Cuisines' },
+  { id: 'packages', label: 'Packages' },
+  { id: 'events', label: 'Event Types' },
+  { id: 'overview', label: 'What We Cover' },
+];
+---
+<BaseLayout
+  pageTitle="Services"
+  description="Luxury pure vegetarian catering, event management, corporate galas, celebrity appearances, and multi-cuisine celebrations by Ankit Caterers & Event Management."
+>
+  <PageHero
+    eyebrow={servicesPage.hero.eyebrow}
+    title={servicesPage.hero.title}
+    description={servicesPage.hero.description}
+    anchors={anchors}
+  />
+
+  <section id="catering" class="section-padding border-b border-border-subtle scroll-mt-28">
+    <div class="container-luxury">
+      <SectionHeader
+        eyebrow="Multi-Cuisine Excellence"
+        title="Cuisines We Master"
+        description="Pure vegetarian menus spanning regional Indian traditions, Jain & satvik options, and global flavours."
+        align="center"
+      />
+      <CuisineGrid cuisines={[...servicesPage.cuisines]} />
+    </div>
+  </section>
+
+  <section id="packages" class="section-padding border-b border-border-subtle scroll-mt-28">
+    <div class="container-luxury">
+      <SectionHeader
+        eyebrow="Service Tiers"
+        title="Curated Catering Packages"
+        description="Flexible tiers designed for weddings, corporate events, and private celebrations."
+        align="center"
+      />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {servicesPage.packages.map((pkg) => (
+          <ServiceCard {...pkg} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="section-padding border-b border-border-subtle scroll-mt-28">
+    <div class="container-luxury">
+      <SectionHeader
+        eyebrow="Full Event Management"
+        title="Events & Celebrations We Cover"
+        description="From weddings and birthdays to corporate galas, product launches, and celebrity appearances — we handle every detail."
+        align="center"
+      />
+      <div class="space-y-6">
+        {servicesPage.eventTypes.map((event) => (
+          <EventTypeCard {...event} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="overview" class="section-padding bg-zinc border-b border-border-subtle scroll-mt-28">
+    <div class="container-luxury">
+      <SectionHeader
+        eyebrow="Our Expertise"
+        title="What We Cover"
+        description="Four pillars of luxury hospitality — catering, event management, celebrations, and corporate events."
+        align="center"
+      />
+      <CategoryOverview categories={servicesPage.categories} />
+    </div>
+  </section>
+
+  <CTA
+    title="Let's Build Your Event"
+    description="Tell us your vision on WhatsApp or by phone — we'll handle cuisine, coordination, and every detail."
+    buttonText="Chat on WhatsApp"
+  />
+</BaseLayout>

@@ -1,0 +1,49 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
+import { site } from '../data/site';
+import siteIcon from '../assets/icon.png';
+
+interface Props {
+  pageTitle: string;
+  description?: string;
+}
+
+const {
+  pageTitle,
+  description = `${site.tagline} — Pure vegetarian luxury catering and full-scale event management in Thane & Mumbai.`,
+} = Astro.props;
+
+const fullTitle = pageTitle === 'Home'
+  ? `${site.name} | ${site.tagline}`
+  : `${pageTitle} | ${site.name}`;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://ankitcaterers.in');
+---
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="canonical" href={canonicalUrl.href} />
+    <link rel="icon" type="image/png" href={siteIcon.src} sizes="130x104" />
+    <link rel="shortcut icon" type="image/png" href={siteIcon.src} />
+    <link rel="apple-touch-icon" href={siteIcon.src} />
+    <title>{fullTitle}</title>
+    <ClientRouter />
+  </head>
+  <body class="min-h-screen flex flex-col bg-onyx relative">
+    <Navbar />
+
+    <main class="flex-grow relative z-10">
+      <slot />
+    </main>
+
+    <Footer />
+    <ScrollReveal />
+  </body>
+</html>

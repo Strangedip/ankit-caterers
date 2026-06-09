@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactActions from '../components/ContactActions.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import { site } from '../data/site';
+---
+<BaseLayout
+  pageTitle="Contact"
+  description={`Contact ${site.name} — call or WhatsApp for luxury pure vegetarian catering and event management in Thane & Mumbai.`}
+>
+  <PageHero
+    eyebrow="Get in Touch"
+    title="Let's Plan Your Event"
+    description="Reach out by WhatsApp or phone — we respond to every inquiry within two hours during business hours."
+  />
+
+  <section class="section-padding border-b border-border-subtle">
+    <div class="container-luxury">
+      <ContactActions />
+    </div>
+  </section>
+
+  <section class="section-padding bg-zinc border-b border-border-subtle">
+    <div class="container-luxury">
+      <div class="text-center mb-12 reveal-on-scroll">
+        <span class="eyebrow">Our Service Area</span>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-text-white mb-4">Find Us on the Map</h2>
+        <div class="gold-divider mb-4"></div>
+        <p class="text-text-ash font-light max-w-xl mx-auto">
+          Visit us in Kalyan. We serve events across Thane, Mumbai, and surrounding regions.
+        </p>
+      </div>
+      <div class="reveal-on-scroll">
+        <MapEmbed />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

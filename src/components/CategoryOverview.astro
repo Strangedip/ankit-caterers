@@ -1,0 +1,15 @@
+---
+interface Props {
+  categories: readonly { id: string; title: string; description: string }[];
+}
+
+const { categories } = Astro.props;
+---
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  {categories.map((cat) => (
+    <div id={cat.id} class="card-surface p-6 reveal-on-scroll scroll-mt-28">
+      <h3 class="text-lg font-serif font-semibold text-accent-gold mb-2">{cat.title}</h3>
+      <p class="text-sm text-text-ash leading-relaxed">{cat.description}</p>
+    </div>
+  ))}
+</div>

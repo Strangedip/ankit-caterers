@@ -1,0 +1,28 @@
+---
+import logo from '../assets/logo.png';
+
+interface Props {
+  class?: string;
+  variant?: 'nav' | 'footer';
+}
+
+const { class: className, variant = 'nav' } = Astro.props;
+---
+<a
+  href="/"
+  class:list={[
+    'brand-logo flex items-center shrink-0',
+    variant === 'footer' && 'brand-logo--footer',
+    className,
+  ]}
+>
+  <img
+    src={logo.src}
+    alt="Ankit Caterers & Event Management"
+    width={logo.width}
+    height={logo.height}
+    class="brand-logo-img"
+    loading="eager"
+    decoding="async"
+  />
+</a>

@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import GallerySection from '../components/GallerySection.astro';
+import CTA from '../components/CTA.astro';
+import { galleryPage } from '../data/gallery';
+import { whatsappInquiry } from '../data/site';
+---
+<BaseLayout
+  pageTitle="Gallery"
+  description="Browse our portfolio — weddings, birthdays, corporate events, and catering showcases by Ankit Caterers & Events."
+>
+  <PageHero
+    eyebrow={galleryPage.hero.eyebrow}
+    title={galleryPage.hero.title}
+    description={galleryPage.hero.description}
+  />
+
+  <section class="section-padding">
+    <div class="container-luxury">
+      <!-- Section jump nav -->
+      <nav class="flex flex-wrap justify-center gap-3 mb-16 reveal-on-scroll" aria-label="Gallery sections">
+        {galleryPage.sections.map((section) => (
+          <a
+            href={`#${section.id}`}
+            class="px-5 py-2 text-xs font-semibold uppercase tracking-wider rounded border border-border-subtle text-text-ash hover:border-accent-gold hover:text-accent-gold transition-all duration-300"
+          >
+            {section.title}
+          </a>
+        ))}
+      </nav>
+
+      {galleryPage.sections.map((section) => (
+        <GallerySection {...section} items={[...section.items]} />
+      ))}
+
+      <div class="card-surface p-10 md:p-14 text-center mt-8 reveal-on-scroll">
+        <h2 class="text-2xl md:text-3xl font-serif font-bold text-text-white mb-4">Inspired by What You See?</h2>
+        <p class="text-text-ash mb-8 max-w-xl mx-auto font-light">
+          Share your event vision and we will bring it to life with the same precision and elegance.
+        </p>
+        <a href={whatsappInquiry('Gallery — Book Consultation')} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">Book via WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <CTA buttonText="Chat on WhatsApp" />
+</BaseLayout>

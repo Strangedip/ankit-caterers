@@ -1,0 +1,31 @@
+---
+import { site, whatsappInquiry, telLink } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  buttonText?: string;
+}
+
+const {
+  title = 'Ready to Elevate Your Next Event?',
+  description = 'WhatsApp or call us directly — we respond to every inquiry within two hours.',
+  buttonText = 'Chat on WhatsApp',
+} = Astro.props;
+---
+<section class="section-padding border-t border-border-subtle relative overflow-hidden">
+  <div class="section-glow-top"></div>
+  <div class="absolute inset-0 bg-zinc/40"></div>
+  <div class="gold-glow w-[500px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+  <div class="container-luxury relative z-10 text-center max-w-3xl reveal-on-scroll">
+    <span class="eyebrow">Begin Your Journey</span>
+    <h2 class="text-3xl md:text-5xl font-serif font-bold text-text-white tracking-tight mb-6">{title}</h2>
+    <div class="gold-divider mb-6"></div>
+    <p class="text-lg text-text-ash leading-relaxed font-light mb-10">{description}</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href={whatsappInquiry()} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">{buttonText}</a>
+      <a href={telLink()} class="btn-primary">Call {site.phone}</a>
+    </div>
+  </div>
+</section>

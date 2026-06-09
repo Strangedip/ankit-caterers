@@ -1,0 +1,84 @@
+---
+import { homeContent } from '../data/home';
+import { whatsappInquiry, telLink } from '../data/site';
+
+const { hero, stats } = homeContent;
+
+function renderHeadline(full: string, accent: string) {
+  const idx = full.indexOf(accent);
+  if (idx === -1) return full;
+  return {
+    before: full.slice(0, idx),
+    accent,
+    after: full.slice(idx + accent.length),
+  };
+}
+
+const parts = renderHeadline(hero.headline, hero.headlineAccent);
+---
+<section class="relative overflow-hidden min-h-[88vh] sm:min-h-[92vh] lg:min-h-[95vh] flex items-center border-b border-border-subtle">
+  <div class="absolute inset-0 z-0">
+    <img
+      src={hero.image}
+      alt={hero.imageAlt}
+      class="hero-bg-image w-full h-full object-cover object-center scale-105"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/85 to-onyx/50"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-onyx/70 via-transparent to-onyx/70"></div>
+  </div>
+
+  <div class="hero-shine-line top-0"></div>
+  <div class="gold-glow w-[400px] h-[400px] top-1/4 left-1/2 -translate-x-1/2"></div>
+
+  <div class="container-luxury relative z-10 py-20 sm:py-28 md:py-36 flex flex-col items-center text-center">
+    <span class="badge-glow mb-6 animate-fade-up">
+      <span class="dot-pulse"></span>
+      {hero.eyebrow}
+    </span>
+
+    <h1 class="hero-brand-name animate-fade-up max-w-4xl" style="animation-delay: 0.05s">
+      {hero.businessName.split(' & ')[0]}
+      <span>& {hero.businessName.split(' & ')[1]}</span>
+    </h1>
+
+    <div class="gold-divider-wide mb-8 mt-4 animate-fade-up" style="animation-delay: 0.1s"></div>
+
+    <p class="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-tight leading-[1.15] mb-6 max-w-5xl text-text-white animate-fade-up px-1" style="animation-delay: 0.15s">
+      {typeof parts === 'string' ? (
+        parts
+      ) : (
+        <>
+          {parts.before}
+          <span class="headline-accent">{parts.accent}</span>
+          {parts.after}
+        </>
+      )}
+    </p>
+
+    <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-12 font-light text-text-ash animate-fade-up" style="animation-delay: 0.2s">
+      {hero.subheadline}
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-fade-up" style="animation-delay: 0.3s">
+      <a href={whatsappInquiry('Event booking inquiry')} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+        Book via WhatsApp
+      </a>
+      <a href={telLink()} class="btn-secondary">Call Us</a>
+    </div>
+
+    <div class="mt-14 sm:mt-20 grid grid-cols-3 gap-4 sm:gap-6 md:gap-16 pt-6 sm:pt-8 border-t border-accent-gold/15 w-full max-w-2xl animate-fade-up" style="animation-delay: 0.4s">
+      {stats.map((stat) => (
+        <div>
+          <div class="stat-glow">{stat.value}</div>
+          <div class="text-[10px] md:text-xs text-text-ash mt-1 uppercase tracking-wider">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
+    <svg class="w-5 h-5 text-accent-gold/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>

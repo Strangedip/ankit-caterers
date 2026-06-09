@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import MenuSection from '../components/MenuSection.astro';
+import MenuSidebar from '../components/MenuSidebar.astro';
+import CTA from '../components/CTA.astro';
+import { menuPage } from '../data/menu';
+import { whatsappInquiry } from '../data/site';
+
+const sectionNav = menuPage.sections.map((s) => ({ id: s.id, title: s.title }));
+---
+<BaseLayout
+  pageTitle="Menu"
+  description="Explore our multi-cuisine pure vegetarian menu — starters, mains, live counters, and desserts by Ankit Caterers & Event Management."
+>
+  <PageHero
+    eyebrow={menuPage.hero.eyebrow}
+    title={menuPage.hero.title}
+    description={menuPage.hero.description}
+    anchors={sectionNav}
+  />
+
+  <section class="section-padding">
+    <div class="container-luxury max-w-6xl">
+      <div class="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-12 lg:gap-16">
+        <MenuSidebar sections={sectionNav} />
+
+        <div>
+          {menuPage.sections.map((section) => (
+            <MenuSection {...section} items={[...section.items]} />
+          ))}
+
+          <div class="mt-4 pt-10 border-t border-border-subtle text-center reveal-on-scroll">
+            <p class="text-sm text-text-ash font-light mb-6 max-w-md mx-auto">
+              Menus are fully customisable for your event. Share your preferences and we will tailor every course.
+            </p>
+            <a href={whatsappInquiry('Custom Menu Inquiry')} target="_blank" rel="noopener noreferrer" class="btn-whatsapp">Request Menu on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTA buttonText="Chat on WhatsApp" />
+</BaseLayout>
