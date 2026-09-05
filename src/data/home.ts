@@ -9,7 +9,7 @@ export const homeContent = {
     subheadline:
       'Luxury pure vegetarian catering and end-to-end event management for weddings, corporate galas, and elite gatherings across Thane & Mumbai.',
     image: images.heroEvent,
-    imageAlt: 'Luxury event setup with elegant table scaping',
+    imageAlt: 'Pure vegetarian buffet setup by Ankit Caterers in Kalyan East',
     primaryCta: { label: 'Plan Your Event', href: '/contact' },
     secondaryCta: { label: 'Explore Services', href: '/services' },
   },
@@ -22,12 +22,18 @@ export const homeContent = {
     eyebrow: 'Who We Are',
     title: 'Crafting Unforgettable Experiences Since 1995',
     paragraphs: [
-      'Ankit Caterers & Event Management began as a boutique pure vegetarian catering service and has grown into one of Thane and Mumbai\'s most trusted luxury event agencies.',
-      'From intimate birthday celebrations to grand wedding receptions and corporate galas — we bring culinary excellence, flawless execution, and white-glove hospitality to every occasion.',
+      'Ankit Caterers & Event Management is based in Katemanivali, Kalyan East, and has grown into one of Thane and Mumbai\'s most trusted names for pure vegetarian wedding catering and full-scale event management.',
+      'From intimate birthdays in Dombivli and Ulhasnagar to grand wedding receptions and corporate galas across Mumbai — we bring culinary excellence, Jain-friendly menus, and white-glove hospitality to every occasion.',
     ],
     image: images.kitchenTeam,
-    imageAlt: 'Our culinary team preparing an elegant spread',
+    imageAlt: 'Live vegetarian food station prepared by our catering team',
   },
+  trust: [
+    { label: 'Kalyan East HQ', detail: 'Katemanivali, Kalyan' },
+    { label: 'Service area', detail: 'Thane · Mumbai · Dombivli' },
+    { label: 'Jain & Satvik', detail: 'No onion-garlic menus' },
+    { label: 'Since 1995', detail: '30+ years of events' },
+  ],
   highlights: [
     {
       title: 'Our Services',

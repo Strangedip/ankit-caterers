@@ -9,15 +9,15 @@ interface Props {
 const { eyebrow, title, description, align = 'center' } = Astro.props;
 const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left';
 ---
-<div class={`max-w-2xl mb-16 md:mb-20 reveal-on-scroll ${alignClass}`}>
+<div class={`max-w-2xl mb-8 md:mb-14 reveal-on-scroll ${alignClass}`}>
   {eyebrow && <span class="eyebrow">{eyebrow}</span>}
-  <h2 class="text-4xl md:text-5xl font-serif font-bold text-text-white tracking-tight mb-6">
+  <h2 class="text-2xl sm:text-3xl md:text-5xl font-serif font-bold text-text-white tracking-tight mb-4 md:mb-6">
     {title}
   </h2>
   {description && (
     <>
-      <div class={`gold-divider mb-6 ${align === 'left' ? 'mx-0' : ''}`}></div>
-      <p class="text-lg leading-relaxed font-light text-text-ash">{description}</p>
+      <div class={`gold-divider mb-4 md:mb-6 ${align === 'left' ? 'mx-0' : ''}`}></div>
+      <p class="text-base md:text-lg leading-relaxed font-light text-text-ash">{description}</p>
     </>
   )}
 </div>

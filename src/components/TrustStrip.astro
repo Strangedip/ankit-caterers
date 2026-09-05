@@ -1,0 +1,17 @@
+---
+import { homeContent } from '../data/home';
+
+const { trust } = homeContent;
+---
+<section class="border-b border-border-subtle bg-zinc/40">
+  <div class="container-luxury py-6 md:py-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      {trust.map((item) => (
+        <div class="text-center md:text-left">
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-accent-gold mb-1">{item.label}</p>
+          <p class="text-sm text-text-white font-medium leading-snug">{item.detail}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,24 +1,28 @@
 ---
 import { whatsappInquiry } from '../data/site';
+import type { SiteImage } from '../data/images';
+import IconWhatsApp from './icons/IconWhatsApp.astro';
+import OptimizedImage from './OptimizedImage.astro';
 
 interface Props {
   title: string;
   description?: string;
   priceLabel?: string;
   features: string[];
-  image: string;
+  image: SiteImage;
   inquirySubject: string;
 }
 
 const { title, description, priceLabel, features, image, inquirySubject } = Astro.props;
 ---
 <article class="card-surface overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-accent-gold group flex flex-col h-full reveal-on-scroll">
-  <div class="h-56 bg-onyx overflow-hidden relative border-b border-border-subtle">
-    <img
+  <div class="h-40 md:h-56 bg-onyx overflow-hidden relative border-b border-border-subtle">
+    <OptimizedImage
       src={image}
-      alt={title}
-      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
-      loading="lazy"
+      alt={`${title} catering package by Ankit Caterers`}
+      cover
+      class="transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+      sizes="(max-width: 768px) 100vw, 33vw"
     />
     {priceLabel && (
       <span class="absolute top-4 right-4 bg-zinc/90 backdrop-blur-sm border border-accent-gold/50 text-accent-gold text-xs font-semibold px-4 py-1.5 rounded uppercase tracking-wider">
@@ -27,11 +31,11 @@ const { title, description, priceLabel, features, image, inquirySubject } = Astr
     )}
   </div>
 
-  <div class="p-8 flex flex-col flex-grow">
-    <h3 class="text-2xl font-serif font-semibold mb-2 group-hover:text-accent-gold transition-colors">{title}</h3>
-    {description && <p class="text-sm text-text-ash mb-6 leading-relaxed">{description}</p>}
+  <div class="p-5 md:p-8 flex flex-col flex-grow">
+    <h3 class="text-xl md:text-2xl font-serif font-semibold mb-2 group-hover:text-accent-gold transition-colors">{title}</h3>
+    {description && <p class="text-sm text-text-ash mb-5 md:mb-6 leading-relaxed">{description}</p>}
 
-    <ul class="space-y-3 mb-8 flex-grow">
+    <ul class="space-y-3 mb-6 md:mb-8 flex-grow">
       {features.map((feature) => (
         <li class="flex items-start text-sm text-text-ash leading-relaxed">
           <svg class="w-4 h-4 text-accent-gold mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,8 +50,9 @@ const { title, description, priceLabel, features, image, inquirySubject } = Astr
       href={whatsappInquiry(inquirySubject)}
       target="_blank"
       rel="noopener noreferrer"
-      class="btn-whatsapp w-full text-center mt-auto text-xs !py-3"
+      class="btn-outline w-full text-center mt-auto text-sm"
     >
+      <IconWhatsApp class="w-4 h-4" />
       Inquire on WhatsApp
     </a>
   </div>

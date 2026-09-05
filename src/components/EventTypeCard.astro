@@ -1,30 +1,36 @@
 ---
 import { whatsappInquiry } from '../data/site';
+import type { SiteImage } from '../data/images';
+import IconWhatsApp from './icons/IconWhatsApp.astro';
+import OptimizedImage from './OptimizedImage.astro';
 
 interface Props {
   title: string;
   description: string;
   features: string[];
-  image: string;
+  image: SiteImage;
   inquirySubject: string;
 }
 
 const { title, description, features, image, inquirySubject } = Astro.props;
 ---
 <article class="card-surface overflow-hidden group hover:border-accent-gold transition-all duration-500 reveal-on-scroll">
-  <div class="grid grid-cols-1 md:grid-cols-2">
-    <div class="h-56 md:h-auto min-h-[220px] overflow-hidden">
-      <img
+  <div class="grid grid-cols-[6.5rem_1fr] md:grid-cols-2">
+    <div class="relative h-full min-h-[6.5rem] md:min-h-[220px] overflow-hidden bg-onyx">
+      <OptimizedImage
         src={image}
-        alt={title}
-        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        loading="lazy"
+        alt={`${title} by Ankit Caterers in Kalyan`}
+        cover
+        class="transition-transform duration-700 group-hover:scale-105"
+        sizes="(max-width: 768px) 40vw, 50vw"
+        width={600}
+        height={400}
       />
     </div>
-    <div class="p-8 flex flex-col justify-center">
-      <h3 class="text-2xl font-serif font-semibold text-text-white mb-3 group-hover:text-accent-gold transition-colors">{title}</h3>
-      <p class="text-sm text-text-ash leading-relaxed mb-5">{description}</p>
-      <ul class="space-y-2 mb-6">
+    <div class="p-4 md:p-8 flex flex-col justify-center">
+      <h3 class="text-lg md:text-2xl font-serif font-semibold text-text-white mb-2 md:mb-3 group-hover:text-accent-gold transition-colors">{title}</h3>
+      <p class="text-sm text-text-ash leading-relaxed mb-3 md:mb-5">{description}</p>
+      <ul class="space-y-1.5 md:space-y-2 mb-4 md:mb-6">
         {features.map((f) => (
           <li class="flex items-center gap-2 text-sm text-text-ash">
             <span class="w-1 h-1 rounded-full bg-accent-gold flex-shrink-0"></span>
@@ -36,9 +42,10 @@ const { title, description, features, image, inquirySubject } = Astro.props;
         href={whatsappInquiry(inquirySubject)}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-whatsapp self-start text-xs !py-2.5 !px-5"
+        class="btn-outline self-start text-sm !py-2.5 !px-4 min-h-11"
       >
-        Inquire on WhatsApp
+        <IconWhatsApp class="w-4 h-4" />
+        Inquire
       </a>
     </div>
   </div>

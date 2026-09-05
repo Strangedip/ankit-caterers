@@ -15,7 +15,7 @@ export const menuPage = {
     eyebrow: 'Our Menu',
     title: 'Curated Culinary Selections',
     description:
-      'Explore our multi-cuisine pure vegetarian offerings — from tandoor specials and live counters to Jain-friendly menus and artisan desserts.',
+      'Explore our multi-cuisine pure vegetarian offerings for Kalyan, Thane, and Mumbai events — from tandoor specials and live counters to Jain-friendly menus and artisan desserts.',
   },
   sections: [
     {

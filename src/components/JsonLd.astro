@@ -1,0 +1,83 @@
+---
+import { site, seo, faqs, googleMapsUrl } from '../data/site';
+import ogImage from '../assets/buffet-stall.jpg';
+
+interface Props {
+  canonicalUrl: URL;
+}
+
+const { canonicalUrl } = Astro.props;
+const origin = canonicalUrl.origin;
+const ogImageUrl = new URL(ogImage.src, origin).href;
+const isHome = canonicalUrl.pathname === '/' || canonicalUrl.pathname === '';
+
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'FoodEstablishment',
+    '@id': `${origin}/#business`,
+    name: site.name,
+    alternateName: site.shortName,
+    image: ogImageUrl,
+    url: origin,
+    telephone: site.phoneRaw,
+    email: site.email,
+    priceRange: '₹₹',
+    servesCuisine: [...site.cuisines],
+    foundingDate: String(site.yearEstablished),
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Shop no. 9, Nutan Shree Samarth Apartments, Near Triveni Tower, Hanuman Nagar, Katemanivali',
+      addressLocality: 'Kalyan East',
+      addressRegion: 'Maharashtra',
+      postalCode: '421306',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: site.geo.lat,
+      longitude: site.geo.lng,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '09:00',
+      closes: '21:00',
+    },
+    areaServed: site.areaServed.map((name) => ({
+      '@type': 'City',
+      name,
+    })),
+    hasMap: googleMapsUrl,
+    sameAs: [googleMapsUrl],
+  },
+  {
+    '@type': 'WebSite',
+    '@id': `${origin}/#website`,
+    url: origin,
+    name: site.name,
+    inLanguage: seo.ogLocale,
+    publisher: { '@id': `${origin}/#business` },
+  },
+];
+
+if (isHome) {
+  graph.push({
+    '@type': 'FAQPage',
+    '@id': `${origin}/#faq`,
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  });
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': graph,
+};
+---
+<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />

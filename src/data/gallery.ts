@@ -1,7 +1,7 @@
-import { images } from './images';
+import { images, type SiteImage } from './images';
 
 export type GalleryMedia =
-  | { type: 'image'; src: string; alt: string }
+  | { type: 'image'; src: SiteImage; alt: string }
   | { type: 'video'; src: string; poster?: string; alt: string };
 
 export type GallerySection = {

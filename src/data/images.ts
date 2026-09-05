@@ -1,3 +1,4 @@
+import type { ImageMetadata } from 'astro';
 import buffetStall from '../assets/buffet-stall.jpg';
 import cutleryStall from '../assets/cutlery-stall.jpg';
 import foodStall from '../assets/food-stall.jpg';
@@ -8,24 +9,23 @@ import boards from '../assets/boards.jpg';
 import boardSign from '../assets/board.png';
 import decorAsset from '../assets/decor-asset.jpeg';
 
-/** Central image paths — local catering photos first, veg-only stock for fillers. */
-export const images = {
-  // Your catering & event photos
-  buffetStall: buffetStall.src,
-  cutleryStall: cutleryStall.src,
-  foodStall: foodStall.src,
-  fruitStall: fruitStall.src,
-  fruitStall1: fruitStall1.src,
-  stall: stall.src,
-  boards: boards.src,
-  boardSign: boardSign.src,
-  decorAsset: decorAsset.src,
+export type SiteImage = ImageMetadata | string;
 
-  // Event setups (no food focus)
-  heroEvent:
-    'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1600&auto=format&fit=crop&q=80',
-  kitchenTeam:
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&auto=format&fit=crop&q=80',
+/** Central images — local catering photos first, veg-only stock for fillers. */
+export const images = {
+  buffetStall,
+  cutleryStall,
+  foodStall,
+  fruitStall,
+  fruitStall1,
+  stall,
+  boards,
+  boardSign,
+  decorAsset,
+
+  heroEvent: buffetStall,
+  kitchenTeam: foodStall,
+
   weddingHall:
     'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&auto=format&fit=crop&q=80',
   weddingSetup:
@@ -41,7 +41,6 @@ export const images = {
   intimateGathering:
     'https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=600&auto=format&fit=crop&q=80',
 
-  // Pure vegetarian food (stock)
   vegThali:
     'https://images.unsplash.com/photo-1547592180-85f173990554?w=800&auto=format&fit=crop&q=80',
   vegSaladBowl:
@@ -54,4 +53,4 @@ export const images = {
     'https://images.unsplash.com/photo-1600808662014-d7cf62694fe9?w=800&auto=format&fit=crop&q=80',
   vegDessert:
     'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&auto=format&fit=crop&q=80',
-} as const;
+} as const satisfies Record<string, SiteImage>;

@@ -1,11 +1,11 @@
-import { images } from './images';
+import { images, type SiteImage } from './images';
 
 export type ServiceItem = {
   title: string;
   description: string;
   features: string[];
   priceLabel?: string;
-  image: string;
+  image: SiteImage;
   inquirySubject: string;
 };
 
@@ -20,16 +20,16 @@ export const servicesPage = {
     eyebrow: 'What We Do',
     title: 'Complete Event & Catering Solutions',
     description:
-      'From multi-cuisine pure vegetarian feasts to full-scale event production — weddings, corporate events, celebrity appearances, and every celebration in between.',
+      'From multi-cuisine pure vegetarian feasts in Kalyan East to full-scale event production across Thane, Mumbai, Dombivli, and Ulhasnagar — weddings, corporate events, and every celebration in between.',
   },
   categories: [
     {
-      id: 'catering',
+      id: 'luxury-catering',
       title: 'Luxury Catering',
       description: 'Multi-cuisine pure vegetarian menus crafted for discerning palates.',
     },
     {
-      id: 'events',
+      id: 'event-management',
       title: 'Event Management',
       description: 'End-to-end planning, décor, coordination & on-site execution.',
     },
@@ -39,7 +39,7 @@ export const servicesPage = {
       description: 'Weddings, birthdays, anniversaries, housewarmings & social galas.',
     },
     {
-      id: 'corporate',
+      id: 'corporate-events',
       title: 'Corporate Events',
       description: 'Conferences, product launches, award nights & executive dining.',
     },
@@ -122,5 +122,5 @@ export const servicesPage = {
       image: images.stageEvent,
       inquirySubject: 'Celebrity Appearance Inquiry',
     },
-  ] satisfies (ServiceItem & { image: string })[],
+  ] satisfies ServiceItem[],
 } as const;

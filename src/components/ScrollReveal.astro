@@ -1,5 +1,14 @@
 <script>
   function setupReveal() {
+    document.querySelectorAll('.reveal-on-scroll.is-visible').forEach((el) => {
+      el.classList.remove('is-visible');
+    });
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.innerWidth < 768) return;
+
+    document.documentElement.classList.add('js-reveal');
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -9,7 +18,7 @@
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px -16px 0px' }
     );
 
     document.querySelectorAll('.reveal-on-scroll:not(.is-visible)').forEach((el) => observer.observe(el));

@@ -1,13 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LandingHero from '../components/LandingHero.astro';
+import TrustStrip from '../components/TrustStrip.astro';
 import IntroAbout from '../components/IntroAbout.astro';
 import ExploreCards from '../components/ExploreCards.astro';
+import FaqSection from '../components/FaqSection.astro';
 import CTA from '../components/CTA.astro';
+import { seo } from '../data/site';
 ---
-<BaseLayout pageTitle="Home">
+<BaseLayout pageTitle="Home" title={seo.homeTitle} description={seo.homeDescription}>
   <LandingHero />
+  <TrustStrip />
   <IntroAbout />
   <ExploreCards />
+  <FaqSection />
   <CTA />
 </BaseLayout>

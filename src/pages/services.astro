@@ -17,8 +17,8 @@ const anchors = [
 ];
 ---
 <BaseLayout
-  pageTitle="Services"
-  description="Luxury pure vegetarian catering, event management, corporate galas, celebrity appearances, and multi-cuisine celebrations by Ankit Caterers & Event Management."
+  pageTitle="Vegetarian Catering Services"
+  description="Pure vegetarian catering in Kalyan East — wedding catering, Jain menus, live counters, and event management across Thane, Mumbai, Dombivli & Ulhasnagar."
 >
   <PageHero
     eyebrow={servicesPage.hero.eyebrow}
@@ -27,7 +27,7 @@ const anchors = [
     anchors={anchors}
   />
 
-  <section id="catering" class="section-padding border-b border-border-subtle scroll-mt-28">
+  <section id="catering" class="section-padding border-b border-border-subtle scroll-mt-20 md:scroll-mt-24">
     <div class="container-luxury">
       <SectionHeader
         eyebrow="Multi-Cuisine Excellence"
@@ -39,7 +39,7 @@ const anchors = [
     </div>
   </section>
 
-  <section id="packages" class="section-padding border-b border-border-subtle scroll-mt-28">
+  <section id="packages" class="section-padding border-b border-border-subtle scroll-mt-20 md:scroll-mt-24">
     <div class="container-luxury">
       <SectionHeader
         eyebrow="Service Tiers"
@@ -47,7 +47,7 @@ const anchors = [
         description="Flexible tiers designed for weddings, corporate events, and private celebrations."
         align="center"
       />
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
         {servicesPage.packages.map((pkg) => (
           <ServiceCard {...pkg} />
         ))}
@@ -55,7 +55,7 @@ const anchors = [
     </div>
   </section>
 
-  <section id="events" class="section-padding border-b border-border-subtle scroll-mt-28">
+  <section id="events" class="section-padding border-b border-border-subtle scroll-mt-20 md:scroll-mt-24">
     <div class="container-luxury">
       <SectionHeader
         eyebrow="Full Event Management"
@@ -63,7 +63,7 @@ const anchors = [
         description="From weddings and birthdays to corporate galas, product launches, and celebrity appearances — we handle every detail."
         align="center"
       />
-      <div class="space-y-6">
+      <div class="space-y-4 md:space-y-6">
         {servicesPage.eventTypes.map((event) => (
           <EventTypeCard {...event} />
         ))}
@@ -71,7 +71,7 @@ const anchors = [
     </div>
   </section>
 
-  <section id="overview" class="section-padding bg-zinc border-b border-border-subtle scroll-mt-28">
+  <section id="overview" class="section-padding bg-zinc border-b border-border-subtle scroll-mt-20 md:scroll-mt-24">
     <div class="container-luxury">
       <SectionHeader
         eyebrow="Our Expertise"
@@ -86,6 +86,6 @@ const anchors = [
   <CTA
     title="Let's Build Your Event"
     description="Tell us your vision on WhatsApp or by phone — we'll handle cuisine, coordination, and every detail."
-    buttonText="Chat on WhatsApp"
+    buttonText="WhatsApp"
   />
 </BaseLayout>
