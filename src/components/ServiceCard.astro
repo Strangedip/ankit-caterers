@@ -15,23 +15,24 @@ interface Props {
 
 const { title, description, priceLabel, features, image, inquirySubject } = Astro.props;
 ---
-<article class="card-surface overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-accent-gold group flex flex-col h-full reveal-on-scroll">
-  <div class="h-40 md:h-56 bg-onyx overflow-hidden relative border-b border-border-subtle">
-    <OptimizedImage
-      src={image}
-      alt={`${title} catering package by Ankit Caterers`}
-      cover
-      class="transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
-      sizes="(max-width: 768px) 100vw, 33vw"
-    />
+<article class="group card-lift card-lift--md flex flex-col h-full reveal-on-scroll">
+  <div class="card-surface flex flex-col h-full">
+    <div class="card-media h-40 md:h-56">
+      <OptimizedImage
+        src={image}
+        alt={`${title} catering package by Ankit Caterers`}
+        cover
+        class="transition-transform duration-700 group-hover:scale-[1.03] opacity-90 group-hover:opacity-100"
+        sizes="(max-width: 768px) 100vw, 33vw"
+      />
     {priceLabel && (
-      <span class="absolute top-4 right-4 bg-zinc/90 backdrop-blur-sm border border-accent-gold/50 text-accent-gold text-xs font-semibold px-4 py-1.5 rounded uppercase tracking-wider">
+      <span class="absolute top-4 right-4 z-[5] bg-zinc/90 backdrop-blur-sm border border-accent-gold/50 text-accent-gold text-xs font-semibold px-4 py-1.5 rounded uppercase tracking-wider">
         {priceLabel}
       </span>
     )}
-  </div>
+    </div>
 
-  <div class="p-5 md:p-8 flex flex-col flex-grow">
+    <div class="p-5 md:p-8 flex flex-col flex-grow">
     <h3 class="text-xl md:text-2xl font-serif font-semibold mb-2 group-hover:text-accent-gold transition-colors">{title}</h3>
     {description && <p class="text-sm text-text-ash mb-5 md:mb-6 leading-relaxed">{description}</p>}
 
@@ -55,5 +56,6 @@ const { title, description, priceLabel, features, image, inquirySubject } = Astr
       <IconWhatsApp class="w-4 h-4" />
       Inquire on WhatsApp
     </a>
+    </div>
   </div>
 </article>

@@ -1,13 +1,12 @@
 ---
 import BrandLogo from './BrandLogo.astro';
-import { site, whatsappLink, telLink, googleMapsLink, mailtoLink } from '../data/site';
+import { site, whatsappLink, telLink, googleMapsUrl, mailtoLink } from '../data/site';
 import { navLinks } from '../data/nav';
 ---
 <footer class="site-footer bg-zinc border-t border-border-subtle mt-auto relative">
   <div class="section-glow-top"></div>
   <div class="container-luxury py-8 sm:py-10">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-x-10 lg:gap-y-6">
-      <!-- Brand -->
       <div class="sm:col-span-2 lg:col-span-5">
         <BrandLogo variant="footer" class="mb-3" />
         <p class="text-sm text-text-ash leading-relaxed max-w-md mb-4">
@@ -19,7 +18,6 @@ import { navLinks } from '../data/nav';
         </p>
       </div>
 
-      <!-- Navigate -->
       <div class="lg:col-span-3">
         <h3 class="footer-heading">Navigate</h3>
         <ul class="space-y-2">
@@ -31,7 +29,6 @@ import { navLinks } from '../data/nav';
         </ul>
       </div>
 
-      <!-- Contact -->
       <div class="lg:col-span-4">
         <h3 class="footer-heading">Contact</h3>
         <dl class="space-y-3">
@@ -68,7 +65,6 @@ import { navLinks } from '../data/nav';
       </div>
     </div>
 
-    <!-- Visit us -->
     <div class="footer-address mt-7">
       <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div class="min-w-0 flex-1">
@@ -81,7 +77,7 @@ import { navLinks } from '../data/nav';
           <p class="text-xs text-text-ash/70 mt-2">{site.serviceArea}</p>
         </div>
         <a
-          href={googleMapsLink()}
+          href={googleMapsUrl}
           target="_blank"
           rel="noopener noreferrer"
           class="btn-outline inline-flex items-center justify-center gap-2 text-xs !py-2.5 !px-4 shrink-0 w-full sm:w-auto"
@@ -95,7 +91,6 @@ import { navLinks } from '../data/nav';
       </div>
     </div>
 
-    <!-- Copyright -->
     <div class="mt-6 pt-5 border-t border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-text-ash/80">
       <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
       <p>{site.location}</p>

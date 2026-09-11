@@ -30,8 +30,6 @@ const parts = renderHeadline(hero.headline, hero.headlineAccent);
       fetchpriority="high"
       widths={[640, 960, 1400, 1800]}
       sizes="100vw"
-      width={1600}
-      height={900}
     />
     <div class="absolute inset-0 bg-gradient-to-t from-onyx via-onyx/85 to-onyx/50"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-onyx/70 via-transparent to-onyx/70"></div>
@@ -73,13 +71,13 @@ const parts = renderHeadline(hero.headline, hero.headlineAccent);
     </p>
 
     <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto animate-fade-up" style="animation-delay: 0.3s">
-      <a href={telLink()} class="btn-primary w-full sm:w-auto">
-        <IconPhone class="w-4 h-4" />
-        Call
-      </a>
-      <a href={whatsappInquiry('Event booking inquiry')} target="_blank" rel="noopener noreferrer" class="btn-outline w-full sm:w-auto text-text-white">
+      <a href={whatsappInquiry('Event booking inquiry')} target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto">
         <IconWhatsApp class="w-4 h-4" />
         WhatsApp
+      </a>
+      <a href={telLink()} class="btn-outline w-full sm:w-auto text-text-white">
+        <IconPhone class="w-4 h-4" />
+        Call
       </a>
     </div>
 

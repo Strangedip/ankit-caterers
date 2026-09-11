@@ -1,5 +1,5 @@
 ---
-import { site, mapLocations, googleMapsLink } from '../data/site';
+import { site, mapLocations, googleMapsUrl } from '../data/site';
 
 const primary = mapLocations[0];
 const locationsJson = JSON.stringify(
@@ -21,7 +21,7 @@ const locationsJson = JSON.stringify(
       {primary.label}
     </p>
     <a
-      href={googleMapsLink()}
+      href={googleMapsUrl}
       target="_blank"
       rel="noopener noreferrer"
       class="btn-outline inline-flex items-center gap-2 shrink-0"
@@ -37,7 +37,7 @@ const locationsJson = JSON.stringify(
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="anonymous" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="anonymous"></script>
-<script define:vars={{ locationsJson, siteName: site.name, googleMapsUrl: googleMapsLink() }}>
+<script define:vars={{ locationsJson, siteName: site.name, googleMapsUrl }}>
   let mapInstance = null;
 
   function initMap() {

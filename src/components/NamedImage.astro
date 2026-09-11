@@ -1,0 +1,31 @@
+---
+import OptimizedImage from './OptimizedImage.astro';
+import { getNamedImage } from '../data/namedImages';
+
+interface Props {
+  name: string;
+  alt: string;
+  class?: string;
+  sizes?: string;
+  overlay?: boolean;
+}
+
+const { name, alt, class: className, sizes, overlay = true } = Astro.props;
+const image = getNamedImage(name);
+---
+{image ? (
+  <>
+    <OptimizedImage
+      src={image}
+      alt={alt}
+      cover
+      class={className}
+      sizes={sizes}
+    />
+    {overlay && (
+      <div class="absolute inset-0 bg-gradient-to-t from-onyx/90 via-onyx/30 to-onyx/10 pointer-events-none"></div>
+    )}
+  </>
+) : (
+  <div class="absolute inset-0 bg-gradient-to-br from-zinc via-onyx to-zinc"></div>
+)}

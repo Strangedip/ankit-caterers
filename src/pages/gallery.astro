@@ -4,8 +4,6 @@ import PageHero from '../components/PageHero.astro';
 import GallerySection from '../components/GallerySection.astro';
 import CTA from '../components/CTA.astro';
 import { galleryPage } from '../data/gallery';
-import { whatsappInquiry } from '../data/site';
-import IconWhatsApp from '../components/icons/IconWhatsApp.astro';
 ---
 <BaseLayout
   pageTitle="Event Gallery"
@@ -15,6 +13,8 @@ import IconWhatsApp from '../components/icons/IconWhatsApp.astro';
     eyebrow={galleryPage.hero.eyebrow}
     title={galleryPage.hero.title}
     description={galleryPage.hero.description}
+    backgroundImage={galleryPage.hero.image}
+    backgroundAlt={galleryPage.hero.imageAlt}
   />
 
   <section class="section-padding">
@@ -25,7 +25,7 @@ import IconWhatsApp from '../components/icons/IconWhatsApp.astro';
         style="top: calc(4rem + env(safe-area-inset-top, 0px))"
       >
         <div class="chip-nav-fade md:[&::after]:hidden">
-          <div class="chip-nav justify-start md:flex-wrap md:overflow-visible md:snap-none md:justify-center">
+          <div class="chip-nav justify-start pr-9 md:pr-0 md:flex-wrap md:overflow-visible md:snap-none md:justify-center">
           {galleryPage.sections.map((section) => (
             <a href={`#${section.id}`}>{section.title}</a>
           ))}
@@ -36,21 +36,10 @@ import IconWhatsApp from '../components/icons/IconWhatsApp.astro';
       {galleryPage.sections.map((section) => (
         <GallerySection {...section} items={[...section.items]} />
       ))}
-
-      <div class="card-surface p-6 md:p-14 text-center mt-8 reveal-on-scroll">
-        <h2 class="text-2xl md:text-3xl font-serif font-bold text-text-white mb-4">Inspired by What You See?</h2>
-        <p class="text-text-ash mb-6 max-w-xl mx-auto font-light">
-          Share your event vision and we will bring it to life with the same precision and elegance across Kalyan, Thane, and Mumbai.
-        </p>
-        <a href={whatsappInquiry('Gallery — Book Consultation')} target="_blank" rel="noopener noreferrer" class="btn-outline">
-          <IconWhatsApp class="w-4 h-4" />
-          Book via WhatsApp
-        </a>
-      </div>
     </div>
   </section>
 
-  <CTA buttonText="WhatsApp" />
+  <CTA />
 </BaseLayout>
 
 <style>

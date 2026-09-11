@@ -14,20 +14,19 @@ interface Props {
 
 const { title, description, features, image, inquirySubject } = Astro.props;
 ---
-<article class="card-surface overflow-hidden group hover:border-accent-gold transition-all duration-500 reveal-on-scroll">
-  <div class="grid grid-cols-[6.5rem_1fr] md:grid-cols-2">
-    <div class="relative h-full min-h-[6.5rem] md:min-h-[220px] overflow-hidden bg-onyx">
+<article class="group card-surface card-surface-interactive reveal-on-scroll">
+  <div class="flex flex-col md:grid md:grid-cols-2">
+    <div class="card-media w-full aspect-[16/10] md:aspect-auto md:min-h-[220px]">
       <OptimizedImage
         src={image}
         alt={`${title} by Ankit Caterers in Kalyan`}
         cover
-        class="transition-transform duration-700 group-hover:scale-105"
-        sizes="(max-width: 768px) 40vw, 50vw"
-        width={600}
-        height={400}
+        class="transition-transform duration-700 group-hover:scale-[1.03]"
+        sizes="(max-width: 768px) 100vw, 50vw"
       />
+      <div class="absolute inset-0 bg-gradient-to-t from-onyx/40 via-transparent to-transparent md:from-onyx/20 pointer-events-none"></div>
     </div>
-    <div class="p-4 md:p-8 flex flex-col justify-center">
+    <div class="p-5 md:p-8 flex flex-col justify-center">
       <h3 class="text-lg md:text-2xl font-serif font-semibold text-text-white mb-2 md:mb-3 group-hover:text-accent-gold transition-colors">{title}</h3>
       <p class="text-sm text-text-ash leading-relaxed mb-3 md:mb-5">{description}</p>
       <ul class="space-y-1.5 md:space-y-2 mb-4 md:mb-6">

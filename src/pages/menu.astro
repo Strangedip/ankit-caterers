@@ -8,7 +8,10 @@ import { menuPage } from '../data/menu';
 import { whatsappInquiry } from '../data/site';
 import IconWhatsApp from '../components/icons/IconWhatsApp.astro';
 
-const sectionNav = menuPage.sections.map((s) => ({ id: s.id, title: s.title }));
+const sectionNav = menuPage.sections.map((s) => ({
+  id: s.id,
+  title: s.title,
+}));
 ---
 <BaseLayout
   pageTitle="Vegetarian Catering Menu"
@@ -18,6 +21,8 @@ const sectionNav = menuPage.sections.map((s) => ({ id: s.id, title: s.title }));
     eyebrow={menuPage.hero.eyebrow}
     title={menuPage.hero.title}
     description={menuPage.hero.description}
+    backgroundImage={menuPage.hero.image}
+    backgroundAlt={menuPage.hero.imageAlt}
   />
 
   <section class="section-padding">
@@ -31,8 +36,8 @@ const sectionNav = menuPage.sections.map((s) => ({ id: s.id, title: s.title }));
           ))}
 
           <div class="mt-4 pt-8 border-t border-border-subtle text-center reveal-on-scroll">
-            <p class="text-sm text-text-ash font-light mb-5 max-w-md mx-auto">
-              Menus are fully customisable for your event in Kalyan, Thane, or Mumbai. Share your preferences and we will tailor every course.
+            <p class="text-sm text-text-ash font-light mb-5 max-w-lg mx-auto">
+              The dishes above are representative samples only. We offer many more options across every category — share your preferences and we will build a fully custom menu for your event in Kalyan, Thane, or Mumbai.
             </p>
             <a href={whatsappInquiry('Custom Menu Inquiry')} target="_blank" rel="noopener noreferrer" class="btn-outline">
               <IconWhatsApp class="w-4 h-4" />
@@ -44,5 +49,5 @@ const sectionNav = menuPage.sections.map((s) => ({ id: s.id, title: s.title }));
     </div>
   </section>
 
-  <CTA buttonText="WhatsApp" />
+  <CTA />
 </BaseLayout>

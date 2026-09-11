@@ -1,6 +1,6 @@
 ---
 import { site, seo, faqs, googleMapsUrl } from '../data/site';
-import ogImage from '../assets/buffet-stall.jpg';
+import ogImage from '../assets/logo.png';
 
 interface Props {
   canonicalUrl: URL;
@@ -26,7 +26,7 @@ const graph: Record<string, unknown>[] = [
     foundingDate: String(site.yearEstablished),
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Shop no. 9, Nutan Shree Samarth Apartments, Near Triveni Tower, Hanuman Nagar, Katemanivali',
+      streetAddress: `${site.addressLines[0]}, ${site.addressLines[1]}`,
       addressLocality: 'Kalyan East',
       addressRegion: 'Maharashtra',
       postalCode: '421306',

@@ -7,7 +7,6 @@ export const site = {
   phoneRaw: '+918369555816',
   location: 'Thane & Mumbai, Maharashtra',
   locationShort: 'Kalyan East · Thane · Mumbai',
-  address: 'Shop no. 9, Nutan Shree Samarth Apartments, Near Triveni Tower, Hanuman Nagar, Katemanivali, Kalyan East, Maharashtra 421306',
   addressLines: [
     'Shop no. 9, Nutan Shree Samarth Apartments',
     'Near Triveni Tower, Hanuman Nagar, Katemanivali',
@@ -15,9 +14,8 @@ export const site = {
   ] as const,
   serviceArea: 'Serving Kalyan, Dombivli, Ulhasnagar, Thane, Mumbai & surrounding regions',
   yearEstablished: 1995,
-  whatsappMessage: 'Hi, i want to book',
+  whatsappMessage: 'Hi, I want to book',
   businessHours: 'Daily, 9 AM – 9 PM IST',
-  openingHours: 'Mo-Su 09:00-21:00',
   geo: { lat: 19.2247, lng: 73.1424 },
   areaServed: [
     'Kalyan East',
@@ -54,7 +52,7 @@ export const faqs = [
   {
     question: 'How do I book Ankit Caterers?',
     answer:
-      'Call or WhatsApp us with your date, guest count, and event type. We respond within two hours during business hours (9 AM – 9 PM IST).',
+      'WhatsApp or call us with your date, guest count, and event type. We respond within two hours during business hours (9 AM – 9 PM IST).',
   },
   {
     question: 'Are your menus pure vegetarian and Jain-friendly?',
@@ -72,10 +70,6 @@ export const faqs = [
       'Since 1995 — more than 30 years of pure vegetarian catering and event management, with 2,500+ events executed.',
   },
 ] as const;
-
-export function googleMapsLink() {
-  return googleMapsUrl;
-}
 
 export function telLink() {
   return `tel:${site.phoneRaw}`;

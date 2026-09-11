@@ -12,7 +12,7 @@ export type ServiceItem = {
 export type CuisineItem = {
   name: string;
   description: string;
-  icon: 'north' | 'south' | 'gujarati' | 'jain' | 'continental' | 'live';
+  icon: 'north' | 'south' | 'gujarati' | 'jain' | 'chinese' | 'continental' | 'live';
 };
 
 export const servicesPage = {
@@ -21,6 +21,8 @@ export const servicesPage = {
     title: 'Complete Event & Catering Solutions',
     description:
       'From multi-cuisine pure vegetarian feasts in Kalyan East to full-scale event production across Thane, Mumbai, Dombivli, and Ulhasnagar — weddings, corporate events, and every celebration in between.',
+    image: images.buffetStall,
+    imageAlt: 'Premium vegetarian buffet by Ankit Caterers',
   },
   categories: [
     {
@@ -45,12 +47,41 @@ export const servicesPage = {
     },
   ] as const,
   cuisines: [
-    { name: 'North Indian', description: 'Rich gravies, tandoor specials & royal thali spreads', icon: 'north' },
-    { name: 'South Indian', description: 'Dosas, idlis, uttapam & authentic filter coffee stations', icon: 'south' },
-    { name: 'Gujarati & Rajasthani', description: 'Traditional farsan, dhokla & festive thali experiences', icon: 'gujarati' },
-    { name: 'Jain & Satvik', description: 'Strict no onion-garlic menus with uncompromising flavour', icon: 'jain' },
-    { name: 'Continental & Fusion', description: 'Global vegetarian cuisine with modern presentation', icon: 'continental' },
-    { name: 'Live Stations', description: 'Chaat, pasta, tandoor, chaat & interactive cooking counters', icon: 'live' },
+    {
+      name: 'North Indian',
+      description: 'Rich gravies, tandoor specials & royal thali spreads',
+      icon: 'north',
+    },
+    {
+      name: 'South Indian',
+      description: 'Dosas, idlis, uttapam & authentic filter coffee stations',
+      icon: 'south',
+    },
+    {
+      name: 'Gujarati & Rajasthani',
+      description: 'Traditional farsan, dhokla & festive thali experiences',
+      icon: 'gujarati',
+    },
+    {
+      name: 'Jain & Satvik',
+      description: 'Strict no onion-garlic menus with uncompromising flavour',
+      icon: 'jain',
+    },
+    {
+      name: 'Indo-Chinese',
+      description: 'Veg manchurian, hakka noodles, fried rice & live wok counters',
+      icon: 'chinese',
+    },
+    {
+      name: 'Live Stations',
+      description: 'Chaat, tandoor, dosa & interactive cooking counters',
+      icon: 'live',
+    },
+    {
+      name: 'Continental & Fusion',
+      description: 'Global vegetarian cuisine with modern presentation',
+      icon: 'continental',
+    },
   ] satisfies CuisineItem[],
   packages: [
     {
@@ -70,7 +101,7 @@ export const servicesPage = {
       title: 'Corporate & Gala Execution',
       description: 'Full-scale production for corporate events and formal galas.',
       priceLabel: 'Custom Quoted',
-      image: images.corporateEvent,
+      image: images.foodCounter,
       inquirySubject: 'Corporate & Gala Package Inquiry',
       features: [
         'High-Tea & Formal Banquet Catering',

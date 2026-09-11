@@ -1,16 +1,31 @@
 ---
+import type { SiteImage } from '../data/images';
+import OptimizedImage from './OptimizedImage.astro';
+
 interface Props {
   eyebrow?: string;
   title: string;
   description?: string;
-  anchors?: { id: string; label?: string; title?: string }[];
+  anchors?: { id: string; label: string }[];
+  backgroundImage: SiteImage;
+  backgroundAlt?: string;
 }
 
-const { eyebrow, title, description, anchors } = Astro.props;
+const { eyebrow, title, description, anchors, backgroundImage, backgroundAlt } = Astro.props;
 ---
 <section class="page-hero border-b border-border-subtle relative overflow-hidden">
-  <div class="section-glow-top"></div>
-  <div class="gold-glow w-[400px] h-[400px] top-0 left-1/2 -translate-x-1/2 opacity-50"></div>
+  <div class="absolute inset-0 z-0">
+    <OptimizedImage
+      src={backgroundImage}
+      alt={backgroundAlt ?? title}
+      cover
+      loading="eager"
+      fetchpriority="high"
+      class="hero-bg-image"
+      sizes="100vw"
+    />
+  </div>
+  <div class="absolute inset-0 z-[1] bg-gradient-to-b from-onyx/85 via-onyx/75 to-onyx"></div>
   <div class="container-luxury relative z-10 text-center max-w-3xl">
     {eyebrow && <span class="eyebrow">{eyebrow}</span>}
     <h1 class="text-2xl sm:text-4xl md:text-6xl font-serif font-bold text-text-white tracking-tight mb-4 md:mb-6 text-balance break-words px-1">
@@ -24,7 +39,7 @@ const { eyebrow, title, description, anchors } = Astro.props;
     {anchors && anchors.length > 0 && (
       <nav class="chip-nav chip-nav--wrap justify-center mt-6 md:mt-8 pt-6 md:pt-8 border-t border-accent-gold/10" aria-label="Section navigation">
         {anchors.map((anchor) => (
-          <a href={`#${anchor.id}`}>{anchor.label ?? anchor.title}</a>
+          <a href={`#${anchor.id}`}>{anchor.label}</a>
         ))}
       </nav>
     )}

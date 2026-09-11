@@ -8,7 +8,7 @@ import ScrollReveal from '../components/ScrollReveal.astro';
 import JsonLd from '../components/JsonLd.astro';
 import { site, seo } from '../data/site';
 import siteIcon from '../assets/icon.png';
-import ogImage from '../assets/buffet-stall.jpg';
+import ogImage from '../assets/logo.png';
 
 interface Props {
   pageTitle: string;
@@ -35,7 +35,7 @@ const ogImageUrl = new URL(ogImage.src, origin).href;
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0A0A0A" />
     <meta name="robots" content="index, follow" />
@@ -48,7 +48,9 @@ const ogImageUrl = new URL(ogImage.src, origin).href;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl.href} />
     <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:image:alt" content="Pure vegetarian buffet by Ankit Caterers, Kalyan East" />
+    <meta property="og:image:width" content={String(ogImage.width)} />
+    <meta property="og:image:height" content={String(ogImage.height)} />
+    <meta property="og:image:alt" content={`${site.name} logo`} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
@@ -69,10 +71,10 @@ const ogImageUrl = new URL(ogImage.src, origin).href;
     <JsonLd canonicalUrl={canonicalUrl} />
     <ClientRouter />
   </head>
-  <body class="min-h-screen flex flex-col bg-onyx relative">
+  <body class="min-h-screen flex flex-col bg-onyx">
     <Navbar />
 
-    <main class="flex-grow relative z-10">
+    <main class="flex-grow">
       <slot />
     </main>
 

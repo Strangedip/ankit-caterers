@@ -5,7 +5,6 @@ import sitemap from '@astrojs/sitemap';
 
 const siteUrl = process.env.SITE_URL ?? 'https://ankitcaterers.in';
 
-// https://astro.build/config
 export default defineConfig({
   site: siteUrl,
   trailingSlash: 'never',

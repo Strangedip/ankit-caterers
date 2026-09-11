@@ -6,13 +6,11 @@ import IconWhatsApp from './icons/IconWhatsApp.astro';
 interface Props {
   title?: string;
   description?: string;
-  buttonText?: string;
 }
 
 const {
   title = 'Ready to Elevate Your Next Event?',
   description = 'WhatsApp or call us directly — we respond to every inquiry within two hours.',
-  buttonText = 'WhatsApp',
 } = Astro.props;
 ---
 <section class="cta-band border-t border-border-subtle relative overflow-hidden">
@@ -26,13 +24,13 @@ const {
     <div class="gold-divider mb-4 md:mb-6"></div>
     <p class="text-base md:text-lg text-text-ash leading-relaxed font-light mb-6 md:mb-8">{description}</p>
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
-      <a href={telLink()} class="btn-primary">
+      <a href={whatsappInquiry()} target="_blank" rel="noopener noreferrer" class="btn-primary">
+        <IconWhatsApp class="w-4 h-4" />
+        WhatsApp
+      </a>
+      <a href={telLink()} class="btn-outline text-text-white">
         <IconPhone class="w-4 h-4" />
         Call {site.phone}
-      </a>
-      <a href={whatsappInquiry()} target="_blank" rel="noopener noreferrer" class="btn-outline text-text-white">
-        <IconWhatsApp class="w-4 h-4" />
-        {buttonText}
       </a>
     </div>
   </div>

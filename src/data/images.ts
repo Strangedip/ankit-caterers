@@ -2,55 +2,37 @@ import type { ImageMetadata } from 'astro';
 import buffetStall from '../assets/buffet-stall.jpg';
 import cutleryStall from '../assets/cutlery-stall.jpg';
 import foodStall from '../assets/food-stall.jpg';
+import foodCounter from '../assets/counter.png';
 import fruitStall from '../assets/fruit-stall.jpg';
 import fruitStall1 from '../assets/fruit-stall1.jpg';
 import stall from '../assets/stall.jpg';
 import boards from '../assets/boards.jpg';
 import boardSign from '../assets/board.png';
 import decorAsset from '../assets/decor-asset.jpeg';
+import weddingHall from '../assets/wedding-hall.jpg';
+import weddingSetup from '../assets/wedding-setup.jpg';
+import birthdaySetup from '../assets/birthday-setup.jpg';
+import conference from '../assets/conference.jpg';
+import stageEvent from '../assets/stage-event.jpg';
+import foodItem from '../assets/dishes/north-indian.jpg';
 
-export type SiteImage = ImageMetadata | string;
+export type SiteImage = ImageMetadata;
 
-/** Central images — local catering photos first, veg-only stock for fillers. */
 export const images = {
   buffetStall,
   cutleryStall,
   foodStall,
+  foodCounter,
   fruitStall,
   fruitStall1,
   stall,
   boards,
   boardSign,
   decorAsset,
-
-  heroEvent: buffetStall,
-  kitchenTeam: foodStall,
-
-  weddingHall:
-    'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&auto=format&fit=crop&q=80',
-  weddingSetup:
-    'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&auto=format&fit=crop&q=80',
-  birthdaySetup:
-    'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&auto=format&fit=crop&q=80',
-  corporateEvent:
-    'https://images.unsplash.com/photo-1561715276-a2d087060f1d?w=600&auto=format&fit=crop&q=80',
-  conference:
-    'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80',
-  stageEvent:
-    'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&auto=format&fit=crop&q=80',
-  intimateGathering:
-    'https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=600&auto=format&fit=crop&q=80',
-
-  vegThali:
-    'https://images.unsplash.com/photo-1547592180-85f173990554?w=800&auto=format&fit=crop&q=80',
-  vegSaladBowl:
-    'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&auto=format&fit=crop&q=80',
-  vegColorfulBowl:
-    'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop&q=80',
-  vegIndianSpread:
-    'https://images.unsplash.com/photo-1626645731056-063adbfb636?w=800&auto=format&fit=crop&q=80',
-  vegPlated:
-    'https://images.unsplash.com/photo-1600808662014-d7cf62694fe9?w=800&auto=format&fit=crop&q=80',
-  vegDessert:
-    'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&auto=format&fit=crop&q=80',
+  weddingHall,
+  weddingSetup,
+  birthdaySetup,
+  conference,
+  stageEvent,
+  foodItem,
 } as const satisfies Record<string, SiteImage>;
